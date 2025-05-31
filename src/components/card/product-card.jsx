@@ -1,8 +1,8 @@
 // src/components/card/product-card.jsx
 
 import React from "react";
-// --- PERHATIKAN PERUBAHAN DI SINI: import dari "react-router-dom" ---
-import { Link } from "react-router-dom"; // <--- INI PENTING!
+// --- PERHATIKAN PERUBAHAN DI SINI: import dari "react-router" ---
+import { Link } from "react-router"; // <--- INI PENTING!
 
 export const ProductCard = ({ title, description, image, slug }) => {
   // Console log ini bagus untuk debugging, bisa dihapus nanti jika sudah yakin
@@ -12,8 +12,8 @@ export const ProductCard = ({ title, description, image, slug }) => {
   console.log("Slug for Link:", slug); // Tambahkan log untuk slug juga
 
   return (
-    // Path Link sudah benar: `/TopUP/${slug}` sesuai dengan rute di App.js
-    <Link to={`/TopUP/${slug}`}>
+    // Path Link sudah benar: `/TopUo/${slug}` sesuai dengan rute di App.js
+    <Link to={`/TopUp/${slug}`}>
       <div className="card bg-base-100 flex flex-wrap justify-between shadow-sm transition-transform hover:scale-[1.02]">
         <figure>
           <img

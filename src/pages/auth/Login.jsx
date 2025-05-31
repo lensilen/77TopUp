@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 export const Login = () => {
   return (
@@ -20,9 +21,11 @@ export const Login = () => {
         </button>
         <p className="text-center text-sm">
           Belum memiliki akun?{" "}
-          <span className="font-bold text-[#3774b5] hover:text-[#2d5a8f] cursor-pointer underline">
-            Daftar di sini!
-          </span>
+          <Link to="/auth/register">
+            <span className="font-bold text-[#3774b5] hover:text-[#2d5a8f] cursor-pointer underline">
+              Daftar di sini!
+            </span>
+          </Link>
         </p>
       </div>
     </div>

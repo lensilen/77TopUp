@@ -19,8 +19,10 @@ export const Footer = () => {
               game tanpa gangguan dengan layanan top up terbaik dari kami.
             </p>
             <p className="mt-6">
-              <span className="font-bold">Info layanan pelanggan :</span><br />
-              089876543210 (WA)<br />
+              <span className="font-bold">Info layanan pelanggan :</span>
+              <br />
+              089876543210 (WA)
+              <br />
               tujuhtujuhtopup@gmail.com (Email)
             </p>
             <p>
@@ -57,7 +59,11 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="text-white hover:scale-110 transition-all duration-200"
             >
-              <img src="/twitter.png" alt="X" className="mx-auto w-8 mb-4 hover:scale-110 transition-all duration-200" />
+              <img
+                src="/twitter.png"
+                alt="X"
+                className="mx-auto w-8 mb-4 hover:scale-110 transition-all duration-200"
+              />
             </a>
 
             <a
@@ -66,7 +72,10 @@ export const Footer = () => {
               rel="noopener noreferrer"
               className="text-white hover:scale-110 transition-all duration-200"
             >
-              <img src="/facebook.png" className="mx-auto w-8 mb-4 hover:scale-110 transition-all duration-200" />
+              <img
+                src="/facebook.png"
+                className="mx-auto w-8 mb-4 hover:scale-110 transition-all duration-200"
+              />
             </a>
           </div>
         </div>

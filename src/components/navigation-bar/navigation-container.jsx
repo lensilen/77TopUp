@@ -14,7 +14,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   // Navbar status
-  const isLoggedIn = false
+  const isLoggedIn = false;
   const userRole = "user"; // "user" or "admin"
 
   // Navbar user
