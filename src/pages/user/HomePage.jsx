@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 import { Pagination } from 'swiper/modules';
 import { ProductCard } from "../../components/card/product-card";
 import { Autoplay } from "swiper/modules";
+
 export const HomePage = () => {
   const { keyword } = useParams();
 
