@@ -20,15 +20,16 @@ export const TopUp = () => {
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
 
+  
   return (
     <>
-      <div>TopUp <b>{slug}</b></div>
+      {/* <div>TopUp <b>{slug}</b></div>
       <div>Deskripsi: </div>
       <div>Reviews: </div>
-      <div className="text-red-600">Ini baru bisa Mobile Legends doanggg</div>
+      <div className="text-red-600">Ini baru bisa Mobile Legends doanggg</div> */}
 
       <div className="max-w-3xl mx-auto p-6">
-        <StepWrapper step={step} />
+        {/* <StepWrapper step={step} /> */}
 
         {step === 1 && (
           <AccountInfo

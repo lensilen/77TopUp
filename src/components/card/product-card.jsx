@@ -14,7 +14,7 @@ export const ProductCard = ({ title, description, image, slug }) => {
   return (
     // Path Link sudah benar: `/TopUo/${slug}` sesuai dengan rute di App.js
     <Link to={`/TopUp/${slug}`}>
-      <div className="card bg-base-100 flex flex-wrap justify-between shadow-sm transition-transform hover:scale-[1.02]">
+      <div className="card bg-[#9fe870] flex flex-wrap justify-between shadow-sm transition-transform hover:scale-[1.02]">
         <figure>
           <img
             src={image} // Pastikan 'image' prop Anda berisi URL gambar yang valid

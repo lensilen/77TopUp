@@ -14,21 +14,18 @@ export const HomePage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="bg-[#A1E3F9] py-16 px-6 md:px-16">
+      <section className="bg-[#34e0a1] py-16 px-6 md:px-16">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 max-w-7xl mx-auto">
           {/* LEFT - Text */}
           <div className="md:w-1/2">
             <p className="text-blue-500 font-medium uppercase mb-2">
               Welcome to 77TopUp
             </p>
-            <h1 className="text-4xl font-extrabold text-gray-900 mb-4">
+            <h1 className="text-4xl font-extrabold text-[#00000]">
               Topup Murah Proses Cepat
             </h1>
             <p className="text-gray-700 mb-6">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus,
-              aut esse aliquam labore voluptatem cumque laborum. Fuga reiciendis
-              ut laboriosam aut iste facilis voluptates officiis, incidunt
-              itaque nihil nostrum similique!
+              Platform top up game dan kebutuhan digital terhoki! Dapatkan harga termurah untuk Diamond Mobile Legends, UC PUBG, Valorant Points, dan ratusan game lainnya. Proses? Cukup hitungan detik! Transaksi sat-set, aman, dan online 24 jam.
             </p>
             <div className="w-full">
               <InputSearch />
@@ -89,7 +86,7 @@ export const HomePage = () => {
       </section>
 
       {/* Product Card */}
-      <section className="p-10 bg-[#D1F8EF] min-h-screen">
+      <section className="p-10 bg-[#163300] min-h-screen">
         <div className="max-w-7xl mx-auto px-4">
           {/* Judul/Kategori */}
           <div className="flex flex-wrap gap-4 mb-8">
