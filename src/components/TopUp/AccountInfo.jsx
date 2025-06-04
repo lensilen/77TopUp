@@ -37,7 +37,7 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
           {/* Gambar */}
           <div className="w-full lg:w-[40%]">
             <img
-              src="/MLBB.png"
+              src="/public/MLBB.png"
               alt="Mobile Legends"
               className="object-cover h-full w-full"
             />
@@ -129,7 +129,7 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
       </div>
 
       {/* Container: Ulasan Pembeli */}
-      <div className="px-4 py-12 bg-white border-t border-gray-200">
+      {/* <div className="px-4 py-12 bg-white border-t border-gray-200">
         <div className="max-w-5xl mx-auto">
           <h3 className="text-xl font-semibold text-gray-800 mb-6">Ulasan Pembeli</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -149,10 +149,7 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
                   Cepat murah dan aman!
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </div>
+            ))} */}
     </div>
   );
 }
