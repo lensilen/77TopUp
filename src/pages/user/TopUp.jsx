@@ -1,9 +1,9 @@
 import React from "react";
 import AccountInfo from "../../components/TopUp/AccountInfo";
 import Nominal from "../../components/TopUp/Nominal";
-// import Payment from "../../components/TopUp/Payment";
-// import Confirmation from "../../components/TopUp/Confirmation";
-import StepWrapper from "../../components/TopUp/StepWrapper";
+import Payment from "../../components/TopUp/Payment";
+import Confirmation from "../../components/TopUp/Confirmation";
+// // import StepWrapper from "../../components/TopUp/StepWrapper";
 import { useState } from "react";
 import { useParams } from "react-router";
 
@@ -46,7 +46,7 @@ export const TopUp = () => {
             prevStep={prevStep}
           />
         )}
-        {/* {step === 3 && (
+        {step === 3 && (
           <Payment
             formData={formData}
             setFormData={setFormData}
@@ -54,7 +54,15 @@ export const TopUp = () => {
             prevStep={prevStep}
           />
         )}
-        {step === 4 && <Confirmation formData={formData} prevStep={prevStep} />} */}
+
+        {step === 4 && (
+          <Confirmation
+            formData={formData}
+            setFormData={setFormData}
+            nextStep={nextStep}
+            prevStep={prevStep}
+          />
+        )}
       </div>
     </>
   );
