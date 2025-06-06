@@ -148,7 +148,6 @@ export default function Confirmation({ prevStep, formData }) {
                     <div className="py-2 text-gray-500">Item belum dipilih.</div>
                   )}
                 </div>
-                {/* Bagian metode pembayaran dihapus sesuai permintaan */}
               </div>
 
             </div>
@@ -160,10 +159,10 @@ export default function Confirmation({ prevStep, formData }) {
                   <div className="flex justify-between items-center mt-6">
                       <div>
                           <p className="text-xl font-bold text-gray-900">
-                              <span className="font-normal">Total Bayar</span> 
+                            <span className="font-normal">Total Bayar</span> 
                           </p>
                           <p className="text-2xl font-bold text-orange-600">
-                              Rp {item.price.toLocaleString("id-ID")}
+                            Rp {item.price.toLocaleString("id-ID")}
                           </p>
                       </div>
                   </div>

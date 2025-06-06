@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router"; // PENTING: Impor Link untuk navigasi
+// PENTING: Impor Link untuk navigasi
+import { Link } from "react-router-dom"; // Updated import to 'react-router-dom' for Link
 import { InputSearch } from "../../components/navigation-bar/input-search";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination, Autoplay } from "swiper/modules";
 import { ProductCard } from "../../components/card/product-card";
-
-// Hapus impor useParams jika tidak digunakan untuk fetching list
-// import { useParams } from "react-router";
 
 export const HomePage = () => {
   // LANGKAH 1: Definisikan state yang diperlukan
@@ -59,6 +57,7 @@ export const HomePage = () => {
 
     // LANGKAH 3: Tampilkan data game secara dinamis menggunakan .map()
     return games.map((game) => (
+      // Correctly using Link from 'react-router-dom'
       <Link to={`/TopUp/${game.slug}`} key={game.slug}>
         <ProductCard
           image={game.image} // Gunakan field 'image' dari backend
@@ -127,7 +126,7 @@ export const HomePage = () => {
 
           {/* Card Produk - Kontennya sekarang dipanggil dari fungsi renderProductCards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-             {renderProductCards()}
+              {renderProductCards()}
           </div>
         </div>
       </section>

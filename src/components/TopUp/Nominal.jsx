@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 export default function Nominal({ nextStep, prevStep, formData, setFormData, gameData }) {
-  
-  const [activeView, setActiveView] = useState('DIAMOND'); 
+  const [activeView, setActiveView] = useState('DIAMOND');  
 
   const handleSelect = (itemObject) => {
     setFormData({ ...formData, selectedItem: itemObject });
@@ -39,7 +38,7 @@ export default function Nominal({ nextStep, prevStep, formData, setFormData, gam
         <div className="flex flex-col lg:flex-row w-full max-w-5xl rounded-xl shadow-lg border border-gray-200 overflow-hidden bg-white">
           <div className="w-full lg:w-[40%] hidden lg:block">
             <img
-              src={gameData?.game?.image || "/public/MLBB.png"}
+              src={gameData?.game?.image || "/MLBB.png"}
               alt={gameData?.game?.name || "Game"}
               className="object-cover h-full w-full"
             />
