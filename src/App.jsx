@@ -17,7 +17,7 @@ export default function App() {
         <Route element={<RootLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/homepage" element={<HomePage />} />
-          <Route path="/TopUp/:slug" element={<TopUp />} />
+          <Route path="/topup/:slug" element={<TopUp />} />
           <Route path="/auth/login" element={<Login />}></Route>
           <Route path="/auth/register" element={<Register />}></Route>
           <Route path="/admin/games" element={<EditGames />}></Route>

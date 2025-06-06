@@ -54,28 +54,28 @@ export const HomePage = () => {
             >
               <SwiperSlide>
                 <img
-                  src="/public/I2.png"
+                  src="/I2.png"
                   alt=""
                   className="w-full h-72 md:h-96 object-cover"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  src="/public/Honkai.png"
+                  src="/Honkai.png"
                   alt=""
                   className="w-full h-72 md:h-96 object-cover"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  src="/public/MLBB.png"
+                  src="/MLBB.png"
                   alt=""
                   className="w-full h-72 md:h-96 object-cover"
                 />
               </SwiperSlide>
               <SwiperSlide>
                 <img
-                  src="/public/PUBG.png"
+                  src="/PUBG.png"
                   alt=""
                   className="w-full h-72 md:h-96 object-cover"
                 />
@@ -98,22 +98,22 @@ export const HomePage = () => {
           {/* Card Produk */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <ProductCard
-              image="/public/Genshin2.png"
+              image="/Genshin2.png"
               title="Genshin Impact"
               slug="genshin-impact"
             />
             <ProductCard
-              image="/public/MLBB.png"
+              image="/MLBB.png"
               title="Mobile Legends"
-              slug="mobile-legends"
+              slug="mobile-legends-bang-bang"
             />
             <ProductCard
-              image="/public/I3.png"
+              image="/I3.png"
               title="PUBG Mobile"
               slug="pubg-mobile"
             />
             <ProductCard
-              image="/public/Honkai.png"
+              image="/Honkai.png"
               title="Honkai Star Rail"
               slug="honkai-star-rail"
             />

@@ -37,7 +37,7 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
           {/* Gambar */}
           <div className="w-full lg:w-[40%]">
             <img
-              src="/public/MLBB.png"
+              src="/MLBB.png"
               alt="Mobile Legends"
               className="object-cover h-full w-full"
             />
@@ -127,6 +127,29 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
           </div>
         </div>
       </div>
+
+      {/* Container: Ulasan Pembeli */}
+      {/* <div className="px-4 py-12 bg-white border-t border-gray-200">
+        <div className="max-w-5xl mx-auto">
+          <h3 className="text-xl font-semibold text-gray-800 mb-6">Ulasan Pembeli</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="border rounded-lg p-4 shadow-sm bg-gray-50">
+                <p className="text-sm text-gray-700 font-medium mb-1">
+                  herr****wig@gmail.com
+                </p>
+                <div className="flex items-center text-yellow-500 text-sm mb-1">
+                  {"★★★★★".split("").map((star, idx) => (
+                    <span key={idx}>{star}</span>
+                  ))}
+                </div>
+                <p className="text-sm text-gray-500 mb-1">Diamond 50</p>
+                <p className="text-xs text-gray-400">2025-05-14 20:42:26</p>
+                <p className="italic text-sm text-gray-600 mt-2">
+                  Cepat murah dan aman!
+                </p>
+              </div>
+            ))} */}
     </div>
   );
 }
