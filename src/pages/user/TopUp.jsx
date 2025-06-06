@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import { useParams } from "react-router";
 import AccountInfo from "../../components/TopUp/AccountInfo";
 import Nominal from "../../components/TopUp/Nominal";
 import Payment from "../../components/TopUp/Payment";
 import Confirmation from "../../components/TopUp/Confirmation";
-// // import StepWrapper from "../../components/TopUp/StepWrapper";
-import { useState } from "react";
-import { useParams } from "react-router";
+// Jika kamu ingin pakai indikator langkah, tinggal uncomment:
+// import StepWrapper from "../../components/TopUp/StepWrapper";
 
 export const TopUp = () => {
   const { slug } = useParams();
@@ -20,15 +20,10 @@ export const TopUp = () => {
   const nextStep = () => setStep((prev) => prev + 1);
   const prevStep = () => setStep((prev) => prev - 1);
 
-  
   return (
     <>
-      {/* <div>TopUp <b>{slug}</b></div>
-      <div>Deskripsi: </div>
-      <div>Reviews: </div>
-      <div className="text-red-600">Ini baru bisa Mobile Legends doanggg</div> */}
-
       <div className="max-w-3xl mx-auto p-6">
+        {/* Uncomment kalau mau tampilkan progress step */}
         {/* <StepWrapper step={step} /> */}
 
         {step === 1 && (
@@ -38,6 +33,7 @@ export const TopUp = () => {
             nextStep={nextStep}
           />
         )}
+
         {step === 2 && (
           <Nominal
             formData={formData}
@@ -46,6 +42,7 @@ export const TopUp = () => {
             prevStep={prevStep}
           />
         )}
+
         {step === 3 && (
           <Payment
             formData={formData}
