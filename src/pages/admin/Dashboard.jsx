@@ -53,13 +53,13 @@ const Dashboard = () => {
     },
     {
       icon: <TbPackage size={50} />,
-      bgColor: "secondary",
+      bgColor: "primary",
       amount: packageCount,
       title: "Packages",
     },
     {
       icon: <RiFilePaper2Line size={50} />,
-      bgColor: "accent",
+      bgColor: "primary",
       amount: 106,
       title: "Orders",
     },
