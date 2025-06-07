@@ -9,10 +9,6 @@ export default function AccountInfo({
   const [nickname, setNickname] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  console.log(
-    `https://api.isan.eu.org/nickname/${gameData?.ihsangan_slug}?id=${formData.id}` +
-      (gameData?.is_using_server ? `&server=${formData.server}` : "")
-  );
 
   const handleValidate = async () => {
     setLoading(true);
@@ -21,8 +17,7 @@ export default function AccountInfo({
 
     try {
       const res = await fetch(
-        `https://api.isan.eu.org/nickname/${gameData?.ihsangan_slug}?id=${formData.id}` +
-          (gameData?.is_using_server ? `&server=${formData.server}` : "")
+        `https://api.isan.eu.org/nickname/ml?id=1114917746&server=13486`
       );
       const data = await res.json();
 
@@ -64,8 +59,8 @@ export default function AccountInfo({
           {/* Gambar */}
           <div className="w-full lg:w-[40%]">
             <img
-              src={gameData?.image}
-              alt={gameData?.name}
+              src={gameData?.game.image}
+              alt={gameData?.game.name}
               className="object-cover h-full w-full"
             />
           </div>
@@ -85,7 +80,7 @@ export default function AccountInfo({
 
             <h2 className="text-2xl font-bold">Detail Akun Game</h2>
             <h4 className="text-xl text-gray-800 mb-8">
-              {gameData?.name || "Nama Game"}
+              {gameData?.game.name || "Nama Game"}
             </h4>
 
             {/* Error / Success */}
@@ -116,7 +111,7 @@ export default function AccountInfo({
                   }
                 />
               </div>
-              {gameData?.is_using_server && (
+              {gameData?.game.is_using_server && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     Server
@@ -146,7 +141,7 @@ export default function AccountInfo({
                 disabled={
                   loading ||
                   !formData.id ||
-                  (gameData?.is_using_server && !formData.server) ||
+                  (gameData?.game.is_using_server && !formData.server) ||
                   !!nickname
                 }
               >

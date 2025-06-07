@@ -43,9 +43,9 @@ export default function Nominal({
       <div className="min-h-screen flex justify-center items-center px-4 py-10">
         <div className="flex flex-col lg:flex-row w-full max-w-5xl rounded-xl shadow-lg border border-gray-200 overflow-hidden bg-white">
           <div className="w-full lg:w-[40%] hidden lg:block">
-            <imgit
-              src={gameData?.image || "/MLBB.png"}
-              alt={gameData?.name || "Game"}
+            <img
+              src={gameData?.game.image || "/MLBB.png"}
+              alt={gameData?.game.name || "Game"}
               className="object-cover h-full w-full"
             />
           </div>
@@ -66,9 +66,11 @@ export default function Nominal({
                   Langkah {currentStep}/{totalSteps}
                 </p>
               </div>
+
               <h2 className="text-2xl font-bold text-gray-800 mb-4">
                 Pilih Nominal
               </h2>
+
               <div className="flex items-center gap-4 mb-6">
                 <button
                   onClick={() => handleViewChange("DIAMOND")}
@@ -80,6 +82,7 @@ export default function Nominal({
                 >
                   Diamond
                 </button>
+
                 <button
                   onClick={() => handleViewChange("PASS")}
                   className={`px-6 py-2 text-sm font-semibold rounded-lg shadow-md focus:outline-none ${
@@ -90,6 +93,7 @@ export default function Nominal({
                 >
                   Twilight Pass
                 </button>
+
                 <button className="px-6 py-2 text-sm font-semibold text-gray-400 bg-gray-100 rounded-lg cursor-not-allowed">
                   Battle Pass
                 </button>

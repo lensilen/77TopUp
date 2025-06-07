@@ -53,8 +53,8 @@ export const TopUp = () => {
         }
 
         const json = await res.json();
-        setGameData(json.game);
-        console.log("Game data:", json.game);
+        setGameData(json);
+        console.log("Game data:", json);
 
         // Initialize the first item as default when data is successfully obtained
         if (json.packages && json.packages.length > 0) {
@@ -106,7 +106,13 @@ export const TopUp = () => {
       //    />
       //  );
       case 3: // Assuming Confirmation is step 3 based on your 'topup_baru'
-        return <Confirmation prevStep={prevStep} formData={formData} />;
+        return (
+          <Confirmation
+            prevStep={prevStep}
+            formData={formData}
+            gameData={gameData}
+          />
+        );
       default:
         // Fallback if there is an error in the 'step' state
         return (
