@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { InputSearch } from "./input-search";
 import { DropdownLink } from "./dropdown-link";
 import { Link, useLocation } from "react-router";
@@ -112,44 +112,49 @@ export const Navbar = () => {
       return;
     }
 
-    try {
-      const res = await fetch(
-        "https://77-top-up-be.vercel.app/77topup/sign-up", // URL untuk registrasi
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json", // Menyatakan data dalam format JSON
-          },
-          body: JSON.stringify({
-            email: formData.email, // Kirim email
-            username: formData.username, // Kirim username
-            password: formData.password, // Kirim password
-            confirmPassword: formData.confirmPassword, // Kirim password confirm
-          }),
-        }
-      );
+    console.log("Data yang dikirim:", formData); // Langkah 1: Log data yang dikirim
 
-      if (res.status === 201) {
-        const data = await res.json();
-        console.log(data); // Debug data yang diterima
-
-        if (data?.data?.email && data?.data?.username && data?.data?.password) {
-          setApiData(data.data); // Menyimpan data user yang berhasil didaftarkan
-          setModalType("login"); // Pindah ke modal login setelah registrasi berhasil
-        } else {
-          setError(
-            "Registrasi gagal. Periksa kembali data yang Anda masukkan."
-          );
-        }
-      } else {
-        setError("Gagal registrasi. Coba lagi nanti.");
+  try {
+    const res = await fetch(
+      "https://77-top-up-be.vercel.app/77topup/sign-up", // URL untuk registrasi
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json", // Menyatakan data dalam format JSON
+        },
+        body: JSON.stringify({
+          email: formData.email, // Kirim email
+          username: formData.username, // Kirim username
+          password: formData.password, // Kirim password
+          confirmPassword: formData.confirmPassword, // Kirim password confirm
+        }),
       }
-    } catch (err) {
-      setError("Gagal menghubungi server registrasi. Coba lagi nanti.");
-    }
+    );
 
-    setLoading(false); // Berhenti loading setelah selesai
-  };
+    // Mengecek apakah respons berhasil
+    if (res.ok) {
+      const data = await res.json(); // Parsing respons JSON
+      console.log("Respons dari server:", data); // Debugging respons
+
+      if (data?.data?.email && data?.data?.username && data?.data?.password) {
+        setApiData(data.data); // Menyimpan data user yang berhasil didaftarkan
+        setModalType("login"); // Pindah ke modal login setelah registrasi berhasil
+      } else {
+        setError("Registrasi gagal. Periksa kembali data yang Anda masukkan.");
+      }
+    } else {
+      // Menangani error server
+      const errorData = await res.text(); // Ambil error dalam bentuk teks
+      console.log("Error registrasi:", errorData); // Debug error
+      setError("Gagal registrasi. Coba lagi nanti.");
+    }
+  } catch (err) {
+    console.error("Error saat menghubungi server:", err); // Log error jaringan atau parsing
+    setError("Gagal menghubungi server registrasi. Coba lagi nanti.");
+  }
+
+  setLoading(false); // Berhenti loading setelah selesai
+};
 
   return (
     <div className="navbar bg-base-200 shadow-sm border-b border-base-300 pb-2 pt-2 pl-5 pr-5 sticky z-50">
