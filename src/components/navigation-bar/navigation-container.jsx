@@ -86,7 +86,7 @@ export const Navbar = () => {
       const data = await res.json();
       console.log(data); // Debug data yang diterima dari server
 
-      if (data?.email && data?.password) {
+      if (data?.auth) {
         setApiData(data); // Menyimpan data login yang diterima
         setIsLoggedIn(true); // Set status login menjadi true
         setModalType("login"); // Setelah login, modal akan berpindah ke login
