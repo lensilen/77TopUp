@@ -9,6 +9,10 @@ export default function AccountInfo({
   const [nickname, setNickname] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  console.log(
+    `https://api.isan.eu.org/nickname/${gameData?.ihsangan_slug}?id=${formData.id}` +
+      (gameData?.is_using_server ? `&server=${formData.server}` : "")
+  );
 
   const handleValidate = async () => {
     setLoading(true);
@@ -18,7 +22,7 @@ export default function AccountInfo({
     try {
       const res = await fetch(
         `https://api.isan.eu.org/nickname/${gameData?.ihsangan_slug}?id=${formData.id}` +
-          gameData?.is_using_server && `&server=${formData.server}`
+          (gameData?.is_using_server ? `&server=${formData.server}` : "")
       );
       const data = await res.json();
 
@@ -112,20 +116,22 @@ export default function AccountInfo({
                   }
                 />
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Server
-                </label>
-                <input
-                  type="text"
-                  placeholder="Masukkan Zone ID"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  value={formData.server || ""}
-                  onChange={(e) =>
-                    setFormData({ ...formData, server: e.target.value })
-                  }
-                />
-              </div>
+              {gameData?.is_using_server && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Server
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Masukkan Zone ID"
+                    className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    value={formData.server || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, server: e.target.value })
+                    }
+                  />
+                </div>
+              )}
             </div>
 
             <p className="text-xs text-gray-500 mb-6">
@@ -138,7 +144,10 @@ export default function AccountInfo({
                 onClick={handleValidate}
                 className="w-full bg-blue-600 text-white font-bold py-3 rounded-md hover:bg-blue-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
                 disabled={
-                  loading || !formData.id || !formData.server || !!nickname
+                  loading ||
+                  !formData.id ||
+                  (gameData?.is_using_server && !formData.server) ||
+                  !!nickname
                 }
               >
                 {loading ? "Memvalidasi..." : "Cek Akun"}
