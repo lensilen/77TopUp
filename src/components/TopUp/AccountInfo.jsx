@@ -147,7 +147,7 @@ export default function AccountInfo({
                   loading ||
                   !formData.id ||
                   (gameData?.is_using_server && !formData.server) ||
-                  !nickname
+                  !!nickname
                 }
               >
                 {loading ? "Memvalidasi..." : "Cek Akun"}
