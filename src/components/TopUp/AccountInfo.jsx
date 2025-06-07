@@ -18,15 +18,33 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
 
       if (data?.success) {
         setNickname(data.name);
+        // Simpan juga ke formData utama
+        setFormData({ 
+          ...formData, 
+          nickname: data.name 
+        });
       } else {
         setError("Akun tidak ditemukan. Periksa kembali ID dan Server Anda.");
+        setFormData({ ...formData, nickname: '' });
       }
     } catch (err) {
       setError("Gagal menghubungi server validasi. Coba lagi nanti.");
+      setFormData({ ...formData, nickname: data.name });
     }
 
     setLoading(false);
   };
+
+  // Fungsi helper lain untuk menangani input
+  const handleInputChange = (e, field) => {
+      setFormData({
+          ...formData,
+          [field]: e.target.value,
+          nickname: '' 
+      });
+      setNickname('');
+      setError('');
+  }
 
   return (
     <div className="bg-gray-50">
@@ -53,7 +71,7 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
                   <div className="h-1 bg-orange-500 rounded w-1/4" />
                 </div>
               </div>
-              <p className="text-sm text-gray-500">Langkah 1/4</p>
+              <p className="text-sm text-gray-500">Langkah 1/3</p>
             </div>
 
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
@@ -88,7 +106,7 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
               </div>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Zone ID
+                  Server
                 </label>
                 <input
                   type="text"
