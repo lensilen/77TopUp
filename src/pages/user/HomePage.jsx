@@ -19,14 +19,16 @@ export const HomePage = () => {
     const fetchGames = async () => {
       try {
         // PENTING: Ganti dengan URL API backend Anda yang sebenarnya
-        const response = await fetch('https://77-top-up-be.vercel.app/77topup/homepage'); 
+        const response = await fetch(
+          "https://77-top-up-be.vercel.app/77topup/homepage"
+        );
         if (!response.ok) {
-          throw new Error('Gagal mengambil data dari server.');
+          throw new Error("Gagal mengambil data dari server.");
         }
         const data = await response.json();
-        
+
         // Sesuai dengan backend Anda, array game ada di dalam properti `games`
-        setGames(data.games); 
+        setGames(data.games);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -37,37 +39,41 @@ export const HomePage = () => {
     fetchGames();
   }, []); // Dependensi kosong [] berarti efek ini hanya berjalan sekali
 
-  
   // Fungsi bantuan untuk me-render konten produk
   const renderProductCards = () => {
     // Tampilkan status loading
     if (loading) {
-      return <p className="text-white text-center col-span-full">Memuat game...</p>;
+      return (
+        <p className="text-white text-center col-span-full">Memuat game...</p>
+      );
     }
 
     // Tampilkan pesan error jika ada
     if (error) {
-      return <p className="text-red-400 text-center col-span-full">Error: {error}</p>;
+      return (
+        <p className="text-red-400 text-center col-span-full">Error: {error}</p>
+      );
     }
 
     // Jika tidak ada game, tampilkan pesan
     if (games.length === 0) {
-        return <p className="text-white text-center col-span-full">Belum ada game yang tersedia.</p>;
+      return (
+        <p className="text-white text-center col-span-full">
+          Belum ada game yang tersedia.
+        </p>
+      );
     }
 
     // LANGKAH 3: Tampilkan data game secara dinamis menggunakan .map()
     return games.map((game) => (
       // Correctly using Link from 'react-router-dom'
-      <Link to={`/TopUp/${game.slug}`} key={game.slug}>
-        <ProductCard
-          image={game.image} // Gunakan field 'image' dari backend
-          title={game.name}   // Gunakan field 'name' dari backend
-          slug={game.slug}    // Gunakan field 'slug' dari backend
-        />
-      </Link>
+      <ProductCard
+        image={game.image} // Gunakan field 'image' dari backend
+        title={game.name} // Gunakan field 'name' dari backend
+        slug={game.ihsangan_slug} // Gunakan field 'slug' dari backend
+      />
     ));
   };
-
 
   return (
     <>
@@ -83,7 +89,10 @@ export const HomePage = () => {
               Topup Murah Proses Cepat
             </h1>
             <p className="text-gray-700 mb-6">
-              Platform top up game dan kebutuhan digital terhoki! Dapatkan harga termurah untuk Diamond Mobile Legends, UC PUBG, Valorant Points, dan ratusan game lainnya. Proses? Cukup hitungan detik! Transaksi sat-set, aman, dan online 24 jam.
+              Platform top up game dan kebutuhan digital terhoki! Dapatkan harga
+              termurah untuk Diamond Mobile Legends, UC PUBG, Valorant Points,
+              dan ratusan game lainnya. Proses? Cukup hitungan detik! Transaksi
+              sat-set, aman, dan online 24 jam.
             </p>
             <div className="w-full">
               <InputSearch />
@@ -98,18 +107,34 @@ export const HomePage = () => {
               pagination={{ dynamicBullets: true }}
               autoplay={{ delay: 3000, disableOnInteraction: false }}
             >
-               <SwiperSlide>
-                 <img src="/I2.png" alt="Game Banner 1" className="w-full h-72 md:h-96 object-cover"/>
-               </SwiperSlide>
-               <SwiperSlide>
-                 <img src="/Honkai.png" alt="Game Banner 2" className="w-full h-72 md:h-96 object-cover"/>
-               </SwiperSlide>
-               <SwiperSlide>
-                 <img src="/MLBB.png" alt="Game Banner 3" className="w-full h-72 md:h-96 object-cover"/>
-               </SwiperSlide>
-               <SwiperSlide>
-                 <img src="/PUBG.png" alt="Game Banner 4" className="w-full h-72 md:h-96 object-cover"/>
-               </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="/I2.png"
+                  alt="Game Banner 1"
+                  className="w-full h-72 md:h-96 object-cover"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="/Honkai.png"
+                  alt="Game Banner 2"
+                  className="w-full h-72 md:h-96 object-cover"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="/MLBB.png"
+                  alt="Game Banner 3"
+                  className="w-full h-72 md:h-96 object-cover"
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                <img
+                  src="/PUBG.png"
+                  alt="Game Banner 4"
+                  className="w-full h-72 md:h-96 object-cover"
+                />
+              </SwiperSlide>
             </Swiper>
           </div>
         </div>
@@ -126,7 +151,7 @@ export const HomePage = () => {
 
           {/* Card Produk - Kontennya sekarang dipanggil dari fungsi renderProductCards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {renderProductCards()}
+            {renderProductCards()}
           </div>
         </div>
       </section>
