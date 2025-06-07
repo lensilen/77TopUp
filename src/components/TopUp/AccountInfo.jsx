@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function AccountInfo({ formData, setFormData, nextStep }) {
+export default function AccountInfo({
+  formData,
+  setFormData,
+  nextStep,
+  gameData,
+}) {
   const [nickname, setNickname] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -12,20 +17,39 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
 
     try {
       const res = await fetch(
-        `https://api.isan.eu.org/nickname/ml?id=${formData.id}&server=${formData.server}`
+        `https://api.isan.eu.org/nickname/${gameData?.game?.ihsangan_slug}?id=${formData.id}` +
+          (gameData?.game?.is_using_server ? `&server=${formData.server}` : "")
       );
       const data = await res.json();
 
       if (data?.success) {
         setNickname(data.name);
+        // Simpan juga ke formData utama
+        setFormData({
+          ...formData,
+          nickname: data.name,
+        });
       } else {
         setError("Akun tidak ditemukan. Periksa kembali ID dan Server Anda.");
+        setFormData({ ...formData, nickname: "" });
       }
     } catch (err) {
       setError("Gagal menghubungi server validasi. Coba lagi nanti.");
+      setFormData({ ...formData, nickname: data.name });
     }
 
     setLoading(false);
+  };
+
+  // Fungsi helper lain untuk menangani input
+  const handleInputChange = (e, field) => {
+    setFormData({
+      ...formData,
+      [field]: e.target.value,
+      nickname: "",
+    });
+    setNickname("");
+    setError("");
   };
 
   return (
@@ -33,12 +57,11 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
       {/* Container: Form + Image */}
       <div className="min-h-screen flex justify-center items-center px-4 py-10">
         <div className="flex flex-col lg:flex-row w-full max-w-5xl rounded-xl shadow-lg border border-gray-200 overflow-hidden bg-white">
-
           {/* Gambar */}
           <div className="w-full lg:w-[40%]">
             <img
-              src="/MLBB.png"
-              alt="Mobile Legends"
+              src={gameData?.game.image}
+              alt={gameData?.game.name}
               className="object-cover h-full w-full"
             />
           </div>
@@ -53,12 +76,13 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
                   <div className="h-1 bg-orange-500 rounded w-1/4" />
                 </div>
               </div>
-              <p className="text-sm text-gray-500">Langkah 1/4</p>
+              <p className="text-sm text-gray-500">Langkah 1/3</p>
             </div>
 
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              Detail Akun Game
-            </h2>
+            <h2 className="text-2xl font-bold">Detail Akun Game</h2>
+            <h4 className="text-xl text-gray-800 mb-8">
+              {gameData?.game.name || "Nama Game"}
+            </h4>
 
             {/* Error / Success */}
             {error && (
@@ -83,23 +107,27 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
                   placeholder="Masukkan ID"
                   className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
                   value={formData.id || ""}
-                  onChange={(e) => setFormData({ ...formData, id: e.target.value })}
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Zone ID
-                </label>
-                <input
-                  type="text"
-                  placeholder="Masukkan Zone ID"
-                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                  value={formData.server || ""}
                   onChange={(e) =>
-                    setFormData({ ...formData, server: e.target.value })
+                    setFormData({ ...formData, id: e.target.value })
                   }
                 />
               </div>
+              {gameData?.game.is_using_server && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Server
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Masukkan Zone ID"
+                    className="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                    value={formData.server || ""}
+                    onChange={(e) =>
+                      setFormData({ ...formData, server: e.target.value })
+                    }
+                  />
+                </div>
+              )}
             </div>
 
             <p className="text-xs text-gray-500 mb-6">
@@ -111,7 +139,12 @@ export default function AccountInfo({ formData, setFormData, nextStep }) {
               <button
                 onClick={handleValidate}
                 className="w-full bg-blue-600 text-white font-bold py-3 rounded-md hover:bg-blue-700 transition disabled:bg-gray-300 disabled:cursor-not-allowed"
-                disabled={loading || !formData.id || !formData.server || !!nickname}
+                disabled={
+                  loading ||
+                  !formData.id ||
+                  (gameData?.game.is_using_server && !formData.server) ||
+                  !!nickname
+                }
               >
                 {loading ? "Memvalidasi..." : "Cek Akun"}
               </button>
