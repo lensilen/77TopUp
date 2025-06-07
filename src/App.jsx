@@ -20,8 +20,10 @@ export default function App() {
           <Route path="/topup/:slug" element={<TopUp />} />
           <Route path="/auth/login" element={<Login />}></Route>
           <Route path="/auth/register" element={<Register />}></Route>
-          <Route path="/admin/games" element={<EditGames />}></Route>
-          <Route path="/admin/payments" element={<EditPayments />}></Route>
+          <Route
+            path="/admin/games/:ihsangan_slug"
+            element={<EditGames />}
+          ></Route>
           <Route path="/transaksi"></Route>
         </Route>
 
